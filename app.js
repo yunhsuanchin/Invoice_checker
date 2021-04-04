@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const WinningNumber = require('./models/winning_number')
 const Prize = require('./models/prize')
 require('./config/mongoose')
-const port = 3000
+const PORT = process.env.PORT || 3000
 const app = express()
 
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -32,6 +32,6 @@ app.post('/', async (req, res) => {
   }
 })
 
-app.listen(port, () => {
-  console.log(`App is running on http://localhost:${port}`)
+app.listen(PORT, () => {
+  console.log(`App is running on http://localhost:${PORT}`)
 })

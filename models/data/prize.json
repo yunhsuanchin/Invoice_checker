@@ -1,0 +1,18 @@
+[
+  {
+    "prize": "Special Prize",
+    "winnings": 10000000
+  },
+  {
+    "prize": "Grand Prize",
+    "winnings": 2000000
+  },
+  {
+    "prize": "First Prize",
+    "winnings": 2000000
+  },
+  {
+    "prize": "Additional Sixth Prize",
+    "winnings": 200
+  }
+]

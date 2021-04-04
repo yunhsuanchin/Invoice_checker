@@ -3,17 +3,23 @@ const bodyParser = require('body-parser')
 const WinningNumber = require('./models/winning_number')
 const Prize = require('./models/prize')
 require('./config/mongoose')
-const PORT = process.env.PORT || 3000
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+const PORT = process.env.PORT
 const app = express()
 
 app.use(bodyParser.urlencoded({ extended: true }))
+
+app.get('/', (req, res) => {
+  res.send('hello')
+})
 
 app.post('/', async (req, res) => {
   try {
     const { checkingMonth, checkingNumber } = req.body
     const winningNumbers = await WinningNumber.find({ months: checkingMonth }).populate('prize')
     const invoiceCheck = winningNumbers.find(item => item.number.slice(-3) === checkingNumber)
-    console.log('invoiceCheck', invoiceCheck)
     if (invoiceCheck) {
       return res.json({
         status: 'success',

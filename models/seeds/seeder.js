@@ -1,16 +1,8 @@
-const mongoose = require('mongoose')
+const db = require('../../config/mongoose')
 const WinningNumber = require('../winning_number')
 const Prize = require('../prize')
 const prizeData = require('../data/prize.json')
 const numbers = require('../data/number.json')
-
-mongoose.connect('mongodb://localhost/invoice-checker', { useNewUrlParser: true, useUnifiedTopology: true })
-
-const db = mongoose.connection
-
-db.on('error', () => {
-  console.log('mongodb error.')
-})
 
 db.once('open', async () => {
   try {

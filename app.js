@@ -20,13 +20,15 @@ app.post('/', async (req, res) => {
     const { checkingMonth, checkingNumber } = req.body
     console.log('body', req.body)
     const winningNumbers = await WinningNumber.find({ months: checkingMonth }).populate('prize')
+    console.log('winningNumbers', winningNumbers)
     const invoiceCheck = winningNumbers.find(item => item.number.slice(-3) === checkingNumber)
     if (invoiceCheck) {
       return res.json({
         status: 'success',
         invoice: invoiceCheck.number,
         isWinner: true,
-        amount: invoiceCheck.prize.winnings
+        amount: invoiceCheck.prize.winnings,
+        prize: invoiceCheck.prize.prize
       })
     } else {
       return res.json({

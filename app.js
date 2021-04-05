@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const WinningNumber = require('./models/winning_number')
 const Prize = require('./models/prize')
+const cors = require('cors')
 require('./config/mongoose')
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
@@ -9,11 +10,9 @@ if (process.env.NODE_ENV !== 'production') {
 const PORT = process.env.PORT
 const app = express()
 
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cors())
 
-app.get('/', (req, res) => {
-  res.send('hello')
-})
+app.use(bodyParser.urlencoded({ extended: true }))
 
 app.post('/', async (req, res) => {
   try {

@@ -13,10 +13,12 @@ const app = express()
 app.use(cors())
 
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 
 app.post('/', async (req, res) => {
   try {
     const { checkingMonth, checkingNumber } = req.body
+    console.log('body', req.body)
     const winningNumbers = await WinningNumber.find({ months: checkingMonth }).populate('prize')
     const invoiceCheck = winningNumbers.find(item => item.number.slice(-3) === checkingNumber)
     if (invoiceCheck) {

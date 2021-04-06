@@ -41,16 +41,6 @@ app.post('/', async (req, res) => {
   }
 })
 
-app.get('/', async (req, res) => {
-  try {
-    let winningNumbers = await WinningNumber.find()
-    winningNumbers = [...new Set(winningNumbers.map(item => item.months))]
-    return res.json(winningNumbers)
-  } catch (error) {
-    console.log(error)
-  }
-})
-
 app.listen(PORT, () => {
   console.log(`App is running on http://localhost:${PORT}`)
 })

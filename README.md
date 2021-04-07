@@ -1,6 +1,7 @@
 # Invoice Checker
 
 一個使用 Node.js + Vue.js 打造的發票兌獎網站，使用者於網站選擇兌獎月份及輸入發票末三碼，即可回傳是否中獎、中獎金額等資訊，並會自動紀錄兌獎次數、中獎次數。
+![image](https://github.com/yunhsuanchin/Invoice_checker/blob/master/Xnip2021-04-07_11-37-09.jpg)
 
 [Heroku deploy](https://limitless-island-44228.herokuapp.com)
 
